@@ -8,6 +8,7 @@ use App\Product;
 use App\Post;
 use App\Carousel;
 use App\Tag;
+use App\Social;
 
 class WebController extends Controller
 {
@@ -32,9 +33,10 @@ class WebController extends Controller
 
         $tags=Tag::get();
 
-        $carousels=Carousel::orderBy('id','DESC')->get()->take(3);;
+        $carousels=Carousel::orderBy('id','DESC')->get()->take(3);
+        $socials=Social::orderBy('id','DESC')->get();
 
-        return view('web.index', compact('carousels','tags','specialDeals','specialOffers','hotDeals','latestBlogs','category','productsCategory','productsFeatured','productsNew'));
+        return view('web.index', compact('socials','carousels','tags','specialDeals','specialOffers','hotDeals','latestBlogs','category','productsCategory','productsFeatured','productsNew'));
     }
     public function notFound()
     {

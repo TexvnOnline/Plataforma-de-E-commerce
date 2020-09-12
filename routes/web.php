@@ -48,6 +48,7 @@ Route::put('/reply/{commet}','CommetController@update')->name('comment.update');
 Route::resource('admin/orders','OrderController')->names('orders');
 Route::resource('admin/carousels', 'CarouselController')->names('carousels');
 
+Route::resource('admin/socials', 'SocialController')->names('socials');
 // Route::get('/', function () {
 //     return view('web.track-orders');
 // });
