@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Subcategory;
+use App\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -21,8 +22,9 @@ class ProductController extends Controller
     }
     public function create()
     {
+        $tags = Tag::orderBy('name','ASC')->get();
         $subcategories = Subcategory::orderBy('name','ASC')->pluck('name','id');
-        return view('admin.products.create', compact('subcategories'));
+        return view('admin.products.create', compact('subcategories','tags'));
     }
     public function store(Request $request)
     {
@@ -64,6 +66,7 @@ class ProductController extends Controller
         $product->status = e($request->status);
         $product->save();
         $product->images()->createMany($urlimages);
+        $product->tags()->attach($request->get('tags'));
         return redirect()->route('products.index')->with('info','Agregado correctamente');
     }
     public function show($id)
@@ -73,9 +76,10 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
+        $tags = Tag::orderBy('name','ASC')->get();
         $product = Product::where('id',$id)->firstOrFail();
         $subcategories = Subcategory::orderBy('name','ASC')->pluck('name','id');
-        return view('admin.products.edit',compact('product','subcategories'));
+        return view('admin.products.edit',compact('product','subcategories','tags'));
     }
     public function update(Request $request, $id)
     {
@@ -123,6 +127,7 @@ class ProductController extends Controller
         if ($request->hasFile('images')){
             $product->images()->createMany($urlimages);
         }
+        $product->tags()->sync($request->get('tags'));
         return redirect()->route('products.index')->with('info','Actualizado correctamente');
     }
     public function destroy($id)

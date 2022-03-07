@@ -86,6 +86,32 @@
         <label class="form-check-label" for="status">Borrador</label>
    </div>
 </div>
+
+<div class="form-group"> 
+    {!! Form::label('tags','Etiquetas') !!}
+    <div>
+        @foreach ($tags as $tag)
+            <label >
+                {!! Form::checkbox('tags[]', $tag->id) !!} {{$tag->name}}
+            </label>
+        @endforeach
+    </div>
+   
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @section('scripts')
 
 {!! Html::script('vendor/ckeditorbasic/ckeditor.js') !!}

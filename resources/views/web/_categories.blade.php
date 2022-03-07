@@ -12,7 +12,7 @@
                             <div class="col-sm-12 col-md-3">
                                 <ul class="links list-unstyled">
                                 {{--  @foreach ($categoria->subcategories as $subcategoria)  --}}
-                                    <li><a href="#">{{$subcategoria->name}}</a></li>
+                                    <li><a href="{{route('web.category',$subcategoria->slug)}}">{{$subcategoria->name}}</a></li>
                                 {{--  @endforeach  --}}
                                 </ul>
                             </div>

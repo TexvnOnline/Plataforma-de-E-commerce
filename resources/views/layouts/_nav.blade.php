@@ -24,7 +24,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
                             <h2 class="title">Men</h2>
                             <ul class="links">
-                              <li><a href="#">{{$subcategory->name}}</a></li>
+                            <li><a href="{{route('web.category',$subcategory->slug)}}">{{$subcategory->name}}</a></li>
                             </ul>
                           </div>
                         @endforeach

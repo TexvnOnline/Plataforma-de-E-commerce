@@ -21,11 +21,15 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
     public function subcategory()
     {
         return $this->belongsTo(Subcategory::class);
     }
     public function comments(){
-        return $this->morphMany(Commet::class, 'commentable')->whereNull('parent_id')->orderBy('id','DESC');
+        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id')->orderBy('id','DESC');
     }
 }

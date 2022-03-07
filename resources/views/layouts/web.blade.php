@@ -85,7 +85,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder"> 
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="home.html"> <img src="marazzo/assets/images/logo.png" alt="logo"> </a> </div>
+          <div class="logo"> <a href="home.html"> <img src="{!!asset('marazzo/assets/images/logo.png')!!}" alt="logo"> </a> </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->
@@ -131,7 +131,7 @@
                 <div class="cart-item product-summary">
                   <div class="row">
                     <div class="col-xs-4">
-                      <div class="image"> <a href="detail.html"><img src="marazzo/assets/images/products/p4.jpg" alt=""></a> </div>
+                      <div class="image"> <a href="detail.html"><img src="{!!asset('marazzo/assets/images/products/p4.jpg')!!}" alt=""></a> </div>
                     </div>
                     <div class="col-xs-7">
                       <h3 class="name"><a href="index8a95.html?page-detail">Simple Product</a></h3>
@@ -280,11 +280,11 @@
       <div class="col-xs-12 col-sm-4 no-padding">
         <div class="clearfix payment-methods">
           <ul>
-            <li><img src="marazzo/assets/images/payments/1.png" alt=""></li>
-            <li><img src="marazzo/assets/images/payments/2.png" alt=""></li>
-            <li><img src="marazzo/assets/images/payments/3.png" alt=""></li>
-            <li><img src="marazzo/assets/images/payments/4.png" alt=""></li>
-            <li><img src="marazzo/assets/images/payments/5.png" alt=""></li>
+            <li><img src="{!!asset('marazzo/assets/images/payments/1.png')!!}" alt=""></li>
+            <li><img src="{!!asset('marazzo/assets/images/payments/2.png')!!}" alt=""></li>
+            <li><img src="{!!asset('marazzo/assets/images/payments/3.png')!!}" alt=""></li>
+            <li><img src="{!!asset('marazzo/assets/images/payments/4.png')!!}" alt=""></li>
+            <li><img src="{!!asset('marazzo/assets/images/payments/5.png')!!}" alt=""></li>
           </ul>
         </div>
         <!-- /.payment-methods --> 

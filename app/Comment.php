@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Commet extends Model
+class Comment extends Model
 {
     
     protected $guarded = [];
@@ -15,6 +15,6 @@ class Commet extends Model
         return $this->belongsTo(User::class);
     }
     public function replies(){
-        return $this->hasMany(Commet::class, 'parent_id');
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 }

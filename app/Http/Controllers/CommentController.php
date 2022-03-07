@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Commet;
+use App\Comment;
 use App\Post;
 use App\Product;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class CommentController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
-        $comment = new Commet();
+        $comment = new Comment();
         $comment->body =  $request->body;
         $comment->user()->associate($request->user());
         $product = Product::find($request->product_id);
@@ -27,7 +27,7 @@ class CommentController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
-        $reply = new Commet();
+        $reply = new Comment();
         $reply->body =  $request->get('body');
         $reply->user()->associate($request->user());
         $reply->parent_id =  $request->get('comment_id');
@@ -40,7 +40,7 @@ class CommentController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
-        $comment = new Commet();
+        $comment = new Comment();
         $comment->body =  $request->body;
         $comment->user()->associate($request->user());
         $post = Post::find($request->post_id);
@@ -52,7 +52,7 @@ class CommentController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
-        $reply = new Commet();
+        $reply = new Comment();
         $reply->body =  $request->get('body');
         $reply->user()->associate($request->user());
         $reply->parent_id =  $request->get('comment_id');
@@ -60,11 +60,11 @@ class CommentController extends Controller
         $post->comments()->save($reply);
         return back()->with('info','La respuesta está siendo evaluado');
     }
-    public function edit(Commet $commet)
+    public function edit(Comment $commet)
     {
         return view('admin.posts.partials._editComments', compact('commet'));
     }
-    public function update(Request $request, Commet $commet)
+    public function update(Request $request, Comment $commet)
     {
         $request->validate([
             'body'=>'required',
@@ -72,7 +72,7 @@ class CommentController extends Controller
         $commet->fill($request->all())->save();
         return back()->with('info','Actualizado con éxito');
     }
-    public function destroy(Commet $commet)
+    public function destroy(Comment $commet)
     {
         $commet->delete();
         return back()->with('info','Borrado con éxito');
